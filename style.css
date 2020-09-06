@@ -1,0 +1,142 @@
+/*Typography*/
+
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:18px;
+  background-color:#e6e6ff;
+  color:#000033;
+}
+
+h1, h2, h3 {
+    font-weight:bold;
+}
+
+h1{
+  text-align:center;
+  font-size:2rem; 
+ 
+  text-transform:uppercase;
+}
+
+h2, h3 {
+  margin-top:2em;
+}
+h2{
+  font-size:1.8rem;
+  color:#663300;
+}
+
+h3 {
+  font-size:1.5rem;
+  color:#994d00;
+}
+
+p {
+  padding-bottom:1em;
+  line-height:1.5em;  
+}
+
+/*elements*/
+
+button {
+  padding: 0.5em 0.75em;
+  border-radius:0.3em;
+  box-shadow:none;
+  border:solid 1px #e67300;
+  background-color:#ff9000;
+  color:rgba(255, 255, 255, 0.9);
+  font-weight:bold;
+  font-size:0.9rem;
+}
+
+
+/*spans*/
+.code-highlight {
+  color:#e67300;
+  font-family: 'Source Code Pro', monospace;
+}
+#strikethru {
+  text-decoration:line-through;
+}
+
+
+/*layout*/
+
+.input-container, 
+#submit-container {
+  display:flex;
+  justify-content:flex-start;
+  align-items:baseline;
+}
+
+@media only screen and (max-width: 700px){
+   
+  #submit-container {
+  flex-direction:column;
+    min-height:22vh;
+    justify-content:space-between;
+ 
+    height:25vh;
+  }
+}
+
+
+label {
+padding-right:0.5em;  
+}
+
+input {
+  padding-left:0.5em; 
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+  margin-right:0.5em;
+ }
+
+.display-container {
+  min-height:2em;
+  margin:1em 0;
+  border:solid 1px #3c3c3c;
+  padding:1em 0.5em;
+  border-radius:0.2em;
+  background-color:#fff;
+  position:relative;
+}
+
+/*Watermark text on output fields*/
+
+.display-container::after {
+  content: "";
+  color:#d9d9d9;
+  font-family: 'Source Code Pro', monospace;
+  font-size:2.8em;
+  display: flex; 
+  justify-content:center;
+  align-items:center;
+  top: 16px;
+  left: 12px;
+  
+}
+
+#display-element-single::after{
+  content:"#element-id single"
+} 
+
+#display-element-multiple::after{
+  content:"#element-id multiple"
+}
+
+#display-event-single::after {
+  content:"event.target.value single"  
+}
+
+#display-event-multiple::after {
+  content:"event.target.value multiple";
+}
+
+#display-submit::after{
+  content:"Form 'submit'"
+}
+
+#display-click::after{
+  content:"Button 'click'"
+}

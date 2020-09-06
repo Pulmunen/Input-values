@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang = en>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Handling input field values</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <!-- Introduction-->
+<h1>Getting values from input elements using event listeners ('keyup', 'submit' and 'click')</h1>
+
+<h2>Targeting individual input values using an event listener to listen for keyup events.</h2>
+
+<p>The first 2 pieces of code both take user input values from a single input element and transform it immediately to lower case for output.  Each keystroke is handled separately in this code, making it useful in for example search/matching tasks.</p>
+
+<h3>Targetting the input element's ID - single element</h3>
+
+<p>The first example gets the value to be transformed using the elements id.</p>
+
+<!-- Targetting input element id to get value from single input element-->
+<div class='container'>
+    <div class='input-container'>
+       <label for="input-element-single">Enter mixed case text   here</label>
+       <input id="input-element-single" type="text">  
+    </div>
+  
+    <div id="display-element-single" class="display-container">
+    </div>
+</div>
+
+<h3>Using event object's target property - single element</h3>
+
+<p>The same outcome using the event object's <span class='code-highlight'>target</span> property.</p>
+
+<!-- Using event.target.value to get value from single input element-->
+<div class='container'>
+    <div class='input-container'>
+       <label for="input-event-single">Enter mixed case text here</label>
+       <input id="input-event-single" type="text">
+    </div>
+    <div id="display-event-single" class="display-container">
+    </div>
+</div>
+
+
+<p>The 2nd example is easier to modify, but the 1st could be easier to read depending on the circumstances.</p>
+
+<h2>Handling input from more than one input element</h2>
+<p>No obvious use case comes to mind for code that ouputs the result of a method on individual keystrokes as they're made.  Maybe an edge case in a game?</p>
+<p>That said, working through the examples is an interesting exercise. </p>
+
+<h3>Targetting the input element's ID - multiple elements</H3>
+
+<p>Each input element needs its own event listener, which isn't very DRY at all.</p>
+
+<p>In theory, it would at least be a bit DRYer to loop through the input elements and add an event listener to each one that way. But given that this still wouldn't be the best solution I've decided I'm too <span id="strikethru">lazy</span> busy to go right to the end of this rabbit hole to mine it for learning experiences. Might come back to it later.</p>
+
+<!-- Target element id to get input value, multiple input elements-->
+
+<div class='container'>
+    <div class='input-container'>
+       <label for="input-element-first">Enter mixed case   text here</label>
+       <input id="input-element-first" type="text">
+       <label for="input-element-second">and here</label>
+       <input id="input-element-second" type="text">
+    </div>
+    <div id="display-element-multiple" class="display-container">   
+    </div>
+</div>
+
+
+<h3>Using event object's target property - multiple elements</h3>
+ 
+<p>This is much easier with <span class='code-highlight'>event.target.value</span>, because it allows for the event listener to be placed on an element in the hierarchy above the elements you want to listen to and react to events on any of those contained elements.</p>
+
+<!-- Use event.target.value to get value from multiple input elements-->  
+<div class='container' id="event-multiple-container">
+    <div class='input-container'>
+       <label for="input-event-first">Enter mixed case text here</label>
+       <input type="text" id="input-event-first">
+       <label for="input-event-second">and here</label>
+       <input type="text" id="input-event-second">
+    </div>
+    <div id="display-event-multiple" class="display-container">
+    </div>
+</div>
+
+<h2>Submitting values by listening for a 'submit' event on a form - single and multiple elements</h2>
+ 
+<p>Instead of handling input values keystroke by keystroke, you can submit them on a submit or click event.  If you use a form, then you can add a 'submit' event listener on the form itself. A 'submit' event listener on a form element will react to actions that fire submit events on its children/contained events. That means not just clicks on submit buttons but also pressing return key from an input field, etc.</p>
+
+<p>
+I noticed that putting the event handler on the form to listen for events on child/contained elements it felt natural to switch from using an anonymous function to using a named function as the event handler's function argument.
+</p>
+
+<!-- Use a form to submit entries-->  
+
+<form id="submit-container">
+    <label for="input-submit-first">Enter mixed case text           here</label>
+    <input type="text" id="input-submit-first">
+    <label for="input-submit-second">and here</label>
+    <input type="text" id="input-submit-second">
+   <button type="submit" id="input-button-submit">Submit</button></form>
+<div id="display-submit" class="display-container">  
+</div>
+ 
+
+<h2>Submitting values by listening for a 'click' event - single and multiple elements</h2>
+ 
+<p>Finally, if you're not using a form then you can submit input values from a div or section (or the document body etc.) by adding an event listener to a button element within the div or section to listen for a click event. </p>
+
+
+<!-- Use a button click to submit entries-->  
+
+<div class="container">
+    
+    <div class='input-container'>
+       <label for="input-click-first">Enter mixed case text here</label>
+      <input type="text" id="input-click-first">
+       <label for="input-click-second">and here</label>
+       <input type="text" id="input-click-second">
+      <button id="input-button-click">Click</button>
+    </div>
+  
+  
+    <div id="display-click" class="display-container">
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+    </body>
+</html>
